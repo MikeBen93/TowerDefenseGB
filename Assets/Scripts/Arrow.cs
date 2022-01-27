@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
 
     public float speed = 15;
     public GameObject impactEffect;
+    public float explosionRadius = 0f;
 
     public void SetAim(Transform target)
     {
@@ -28,9 +29,9 @@ public class Arrow : MonoBehaviour
         }
 
         Vector3 dir = _target.position - transform.position;
-        Quaternion _lookRotation = Quaternion.LookRotation(dir);
-        Vector3 _rotation = Quaternion.Lerp(transform.rotation, _lookRotation, Time.deltaTime * 10).eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, _rotation.y, 0f);
+        //Quaternion _lookRotation = Quaternion.LookRotation(dir);
+        //Vector3 _rotation = Quaternion.Lerp(transform.rotation, _lookRotation, Time.deltaTime * 10).eulerAngles;
+        //transform.rotation = Quaternion.Euler(0f, _rotation.y, 0f);
 
         float distanceThisFrame = speed * Time.deltaTime;
 
@@ -41,13 +42,46 @@ public class Arrow : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.LookAt(_target);
     }
 
     private void HitTarget()
     {
         GameObject effectIns =  Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
-        Destroy(_target.gameObject);
+        Destroy(effectIns, 3f);
+
+        if(explosionRadius > 0f)
+        {
+            Explode();
+        } else
+        {
+            Damage(_target);
+        }
+
         Destroy(gameObject);
+    }
+
+    private void Damage(Transform enemy)
+    {
+        Destroy(enemy.gameObject);
+    }
+
+    private void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        foreach(Collider collider in colliders)
+        {
+            if (collider.tag == "Enemy")
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

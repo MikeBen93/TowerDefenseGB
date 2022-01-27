@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Cupid : MonoBehaviour
 {
     private Transform _target;
     private Vector3 _dir;

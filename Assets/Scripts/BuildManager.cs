@@ -17,16 +17,18 @@ public class BuildManager : MonoBehaviour
     }
 
     public GameObject standardCupidPrefab;
-
-    private void Start()
-    {
-        cupidToBuild = standardCupidPrefab;
-    }
+    public GameObject rocketCupidPrefab;
+    public GameObject laserCupidPrefab;
 
     private GameObject cupidToBuild;
 
     public GameObject GetCupidToBuild()
     {
         return cupidToBuild;
+    }
+
+    public void SetCupibToBuild(GameObject cupid)
+    {
+        cupidToBuild = cupid;
     }
 }
