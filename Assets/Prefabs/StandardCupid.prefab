@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2030384999212197502}
   - component: {fileID: 2030384999212197503}
   m_Layer: 0
-  m_Name: Cupid
+  m_Name: StandardCupid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
