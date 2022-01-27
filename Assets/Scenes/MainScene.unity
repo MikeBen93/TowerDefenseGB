@@ -4087,6 +4087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486818503}
   - component: {fileID: 486818504}
+  - component: {fileID: 486818505}
   m_Layer: 0
   m_Name: '[GameManager]'
   m_TagString: Untagged
@@ -4124,6 +4125,19 @@ MonoBehaviour:
   spawnPoint: {fileID: 331193117}
   waveCountdownText: {fileID: 1266047557}
   timeBetweenWaves: 5
+--- !u!114 &486818505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486818502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f8474a2ba08734a9f4a4814f511243, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  standardCupidPrefab: {fileID: 2030384999212197501, guid: b5093f40a45f4904486770e8d5b85c9c, type: 3}
 --- !u!1001 &507263175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7514,6 +7528,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7579,13 +7594,26 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.000015515601, y: 0.87550825, z: -0.48320317, w: -0.000008998904}
-  m_LocalPosition: {x: -20.053843, y: 69.739944, z: 70.72347}
+  m_LocalRotation: {x: 0.23498055, y: -0.6681473, z: 0.23597121, w: 0.66534275}
+  m_LocalPosition: {x: 31.884293, y: 42.31078, z: 17.527966}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 38.904, y: -90.241, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227fe20e430b18d41b0f9a65882d0347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panSpeed: 30
 --- !u!1001 &966646927
 PrefabInstance:
   m_ObjectHideFlags: 0
