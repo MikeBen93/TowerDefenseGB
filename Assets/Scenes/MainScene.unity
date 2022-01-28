@@ -1452,6 +1452,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4bf89686e22464baf208276fe35962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standardCupid:
+    prefab: {fileID: 2030384999212197501, guid: b5093f40a45f4904486770e8d5b85c9c, type: 3}
+    cost: 0
+  rocketCupid:
+    prefab: {fileID: 4071197014930896933, guid: ed2feaa4e71ba7142ae59912787680e1, type: 3}
+    cost: 0
+  laserCupid:
+    prefab: {fileID: 2030384999212197501, guid: ff2ea2166b439424f8cd3e9a3365f2d7, type: 3}
+    cost: 0
 --- !u!1001 &184168480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3288,7 +3297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113521940202988857, guid: 09412e696c3864a4cb6d7be419a03aef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseRocketCupid
+      value: SelectRocketCupid
       objectReference: {fileID: 0}
     - target: {fileID: 5113521940202988857, guid: 09412e696c3864a4cb6d7be419a03aef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -14597,7 +14606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113521940202988857, guid: 09412e696c3864a4cb6d7be419a03aef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseLaserCupid
+      value: SelectLaserCupid
       objectReference: {fileID: 0}
     - target: {fileID: 5113521940202988857, guid: 09412e696c3864a4cb6d7be419a03aef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -16411,7 +16420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113521940202988857, guid: 09412e696c3864a4cb6d7be419a03aef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseStandardCupid
+      value: SelectStandardCupid
       objectReference: {fileID: 0}
     - target: {fileID: 5113521940202988857, guid: 09412e696c3864a4cb6d7be419a03aef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

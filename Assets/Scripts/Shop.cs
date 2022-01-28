@@ -2,24 +2,28 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+    public CupidBlueprint standardCupid;
+    public CupidBlueprint rocketCupid;
+    public CupidBlueprint laserCupid;
+
     BuildManager buildManager;
 
     private void Start()
     {
         buildManager = BuildManager.instance;
     }
-    public void PurchaseStandardCupid()
+    public void SelectStandardCupid()
     {
-        buildManager.SetCupibToBuild(buildManager.standardCupidPrefab);
+        buildManager.SelectCupidToBuild(standardCupid);
     }
 
-    public void PurchaseRocketCupid()
+    public void SelectRocketCupid()
     {
-        buildManager.SetCupibToBuild(buildManager.rocketCupidPrefab);
+        buildManager.SelectCupidToBuild(rocketCupid);
     }
 
-    public void PurchaseLaserCupid()
+    public void SelectLaserCupid()
     {
-        buildManager.SetCupibToBuild(buildManager.laserCupidPrefab);
+        buildManager.SelectCupidToBuild(laserCupid);
     }
 }

@@ -20,14 +20,27 @@ public class BuildManager : MonoBehaviour
     public GameObject rocketCupidPrefab;
     public GameObject laserCupidPrefab;
 
-    private GameObject cupidToBuild;
+    private CupidBlueprint cupidToBuild;
 
-    public GameObject GetCupidToBuild()
+    public bool CanBuild { get { return cupidToBuild != null; } }
+
+    public void BuildCupidOn(Node node)
     {
-        return cupidToBuild;
+        if(PlayerStats.Money < cupidToBuild.cost)
+        {
+            Debug.Log("NOT ENOUGH MONEY TO BUILD");
+            return;
+        }
+
+        PlayerStats.Money -= cupidToBuild.cost;
+
+        GameObject cupid =  Instantiate(cupidToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+        node.cupid = cupid;
+
+        Debug.Log("Cupid build! Money left: " + PlayerStats.Money);
     }
 
-    public void SetCupibToBuild(GameObject cupid)
+    public void SelectCupidToBuild(CupidBlueprint cupid)
     {
         cupidToBuild = cupid;
     }

@@ -6,7 +6,9 @@ public class Node : MonoBehaviour
     public Color hoverColor;
     public Vector3 positionOffset;
 
-    private GameObject cupid;
+    [Header("optional")]
+    public GameObject cupid;
+
     private Color defaultColor;
     private Renderer rend;
 
@@ -19,11 +21,16 @@ public class Node : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
+
     private void OnMouseDown()
     {
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        if (buildManager.GetCupidToBuild() == null) return;
+        if (!buildManager.CanBuild) return;
 
         if (cupid != null)
         {
@@ -31,15 +38,14 @@ public class Node : MonoBehaviour
             return;
         }
 
-        GameObject cupidToBuild = buildManager.GetCupidToBuild();
-        cupid = Instantiate(cupidToBuild, transform.position + positionOffset, transform.rotation);
+        buildManager.BuildCupidOn(this);
     }
 
     private void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        if (buildManager.GetCupidToBuild() == null) return;
+        if (!buildManager.CanBuild) return;
 
         rend.material.color = hoverColor;
     }
