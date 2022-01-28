@@ -1454,13 +1454,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardCupid:
     prefab: {fileID: 2030384999212197501, guid: b5093f40a45f4904486770e8d5b85c9c, type: 3}
-    cost: 0
+    cost: 100
   rocketCupid:
     prefab: {fileID: 4071197014930896933, guid: ed2feaa4e71ba7142ae59912787680e1, type: 3}
-    cost: 0
+    cost: 200
   laserCupid:
     prefab: {fileID: 2030384999212197501, guid: ff2ea2166b439424f8cd3e9a3365f2d7, type: 3}
-    cost: 0
+    cost: 300
 --- !u!1001 &184168480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4450,6 +4450,7 @@ GameObject:
   - component: {fileID: 486818503}
   - component: {fileID: 486818504}
   - component: {fileID: 486818505}
+  - component: {fileID: 486818506}
   m_Layer: 0
   m_Name: '[GameManager]'
   m_TagString: Untagged
@@ -4502,6 +4503,19 @@ MonoBehaviour:
   standardCupidPrefab: {fileID: 2030384999212197501, guid: b5093f40a45f4904486770e8d5b85c9c, type: 3}
   rocketCupidPrefab: {fileID: 4071197014930896933, guid: ed2feaa4e71ba7142ae59912787680e1, type: 3}
   laserCupidPrefab: {fileID: 2030384999212197501, guid: ff2ea2166b439424f8cd3e9a3365f2d7, type: 3}
+--- !u!114 &486818506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486818502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd0a8070a4841cf4f86a285501afe7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 400
 --- !u!1001 &507263175
 PrefabInstance:
   m_ObjectHideFlags: 0
