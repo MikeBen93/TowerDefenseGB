@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     public float speed = 15;
     public GameObject impactEffect;
     public float explosionRadius = 0f;
+    public int damage = 50;
 
     public void SetAim(Transform target)
     {
@@ -63,7 +64,12 @@ public class Arrow : MonoBehaviour
 
     private void Damage(Transform enemy)
     {
-        Destroy(enemy.gameObject);
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        if (e != null)
+        {
+            e.TakeDamage(damage);
+        }
     }
 
     private void Explode()

@@ -20,9 +20,12 @@ public class BuildManager : MonoBehaviour
     public GameObject rocketCupidPrefab;
     public GameObject laserCupidPrefab;
 
+    public GameObject buildEffect;
+
     private CupidBlueprint cupidToBuild;
 
     public bool CanBuild { get { return cupidToBuild != null; } }
+    public bool HasMoney { get { return PlayerStats.Money >= cupidToBuild.cost; } }
 
     public void BuildCupidOn(Node node)
     {
@@ -36,6 +39,8 @@ public class BuildManager : MonoBehaviour
 
         GameObject cupid =  Instantiate(cupidToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.cupid = cupid;
+        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
 
         Debug.Log("Cupid build! Money left: " + PlayerStats.Money);
     }

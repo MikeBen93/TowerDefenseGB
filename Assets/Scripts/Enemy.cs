@@ -3,6 +3,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 4f;
+    public int health = 100;
+    public int value = 50;
+    public GameObject deathEffect;
 
     private Transform _target;
     private int _waypointIndex = 0;
@@ -32,15 +35,39 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Function to set new waypoint 
     /// </summary>
-    void GetNextWaypoint()
+    private void GetNextWaypoint()
     {
         if(_waypointIndex >= Waypoints.waypoints.Length - 1)
         {
-            Destroy(gameObject);
+            EndPath();
             return;
         }
 
         _waypointIndex++;
         _target = Waypoints.waypoints[_waypointIndex];
+    }
+
+    private void EndPath()
+    {
+        PlayerStats.Lives--;
+        Destroy(gameObject);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        PlayerStats.Money += value;
+        GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(effect, 5f);
+        Destroy(gameObject);
     }
 }
