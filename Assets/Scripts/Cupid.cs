@@ -5,6 +5,8 @@ using UnityEngine;
 public class Cupid : MonoBehaviour
 {
     private Transform _target;
+    private Enemy _targetEnemy;
+
     private Vector3 _dir;
     private Quaternion _lookRotation;
     private Vector3 _rotation;
@@ -19,6 +21,10 @@ public class Cupid : MonoBehaviour
 
     [Header("Use laser")]
     public bool useLaser = false;
+
+    public int damageOverTime = 30;
+    public float slowAmount = .5f;
+
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -27,10 +33,10 @@ public class Cupid : MonoBehaviour
 
     public string enemyTag = "Enemy";
     public float turnSpeed = 10f;
-    
+
     public Transform firePoint;
 
-    
+
     private void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.25f);
@@ -52,10 +58,12 @@ public class Cupid : MonoBehaviour
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= range)
+        if (nearestEnemy != null && shortestDistance <= range)
         {
             _target = nearestEnemy.transform;
-        } else
+            _targetEnemy = _target.GetComponent<Enemy>();
+        }
+        else
         {
             _target = null;
         }
@@ -65,7 +73,7 @@ public class Cupid : MonoBehaviour
     {
         if (_target == null)
         {
-            if(useLaser)
+            if (useLaser)
             {
                 if (lineRenderer.enabled)
                 {
@@ -80,10 +88,11 @@ public class Cupid : MonoBehaviour
         //target lock on
         LockOnTarget();
 
-        if(useLaser)
+        if (useLaser)
         {
             Laser();
-        } else
+        }
+        else
         {
             if (fireCountdown <= 0)
             {
@@ -105,6 +114,10 @@ public class Cupid : MonoBehaviour
 
     private void Laser()
     {
+        _targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        _targetEnemy.Slow(slowAmount);
+
+        //below code related to graphics
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
@@ -116,8 +129,8 @@ public class Cupid : MonoBehaviour
 
         Vector3 dir = transform.position - _target.position;
 
-        impactEffect.transform.position = _target.position + dir.normalized * 1f ;
-        impactEffect.transform.rotation = Quaternion.LookRotation(dir);  
+        impactEffect.transform.position = _target.position + dir.normalized * 1f;
+        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
     }
 
     private void Shoot()
@@ -125,7 +138,7 @@ public class Cupid : MonoBehaviour
         GameObject arrowGO = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         Arrow arrow = arrowGO.GetComponent<Arrow>();
 
-        if(arrow != null) arrow.SetAim(_target);
+        if (arrow != null) arrow.SetAim(_target);
     }
 
     private void OnDrawGizmosSelected()
@@ -133,4 +146,5 @@ public class Cupid : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
 }

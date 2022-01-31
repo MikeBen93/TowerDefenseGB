@@ -51,6 +51,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 0}
   fireRate: 5
   useLaser: 1
+  damageOverTime: 50
   lineRenderer: {fileID: -9184536138373406453}
   impactEffect: {fileID: 3413648862247029415}
   impactLight: {fileID: 3285152456840681882}
