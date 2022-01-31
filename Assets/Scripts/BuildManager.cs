@@ -16,10 +16,6 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public GameObject standardCupidPrefab;
-    public GameObject rocketCupidPrefab;
-    public GameObject laserCupidPrefab;
-
     public GameObject buildEffect;
 
     private CupidBlueprint cupidToBuild;
@@ -40,7 +36,7 @@ public class BuildManager : MonoBehaviour
         GameObject cupid =  Instantiate(cupidToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.cupid = cupid;
         GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
+        Destroy(effect, 4f);
 
         Debug.Log("Cupid build! Money left: " + PlayerStats.Money);
     }

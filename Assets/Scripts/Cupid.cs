@@ -9,19 +9,28 @@ public class Cupid : MonoBehaviour
     private Quaternion _lookRotation;
     private Vector3 _rotation;
 
+    [Header("General")]
+    public float range = 15f;
+
+    [Header("Use bullets (default)")]
+    public GameObject arrowPrefab;
+    public float fireRate = 1f;
+    private float fireCountdown = 0;
+
+    [Header("Use laser")]
+    public bool useLaser = false;
+    public LineRenderer lineRenderer;
+    public ParticleSystem impactEffect;
+    public Light impactLight;
+
     [Header("Unity Setup Fields")]
 
     public string enemyTag = "Enemy";
     public float turnSpeed = 10f;
-
-    [Header("Shooting attributes")]
-    //shooting parameters
-    public float range = 15f;
-    public float fireRate = 1f;
-    private float fireCountdown = 0;
-    public GameObject arrowPrefab;
+    
     public Transform firePoint;
 
+    
     private void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.25f);
@@ -54,21 +63,61 @@ public class Cupid : MonoBehaviour
 
     private void Update()
     {
-        if(_target == null) return;
+        if (_target == null)
+        {
+            if(useLaser)
+            {
+                if (lineRenderer.enabled)
+                {
+                    lineRenderer.enabled = false;
+                    impactEffect.Stop();
+                    impactLight.enabled = false;
+                }
+            }
+            return;
+        }
 
         //target lock on
+        LockOnTarget();
+
+        if(useLaser)
+        {
+            Laser();
+        } else
+        {
+            if (fireCountdown <= 0)
+            {
+                Shoot();
+                fireCountdown = 1 / fireRate;
+            }
+
+            fireCountdown -= Time.deltaTime;
+        }
+    }
+
+    private void LockOnTarget()
+    {
         _dir = _target.position - transform.position;
         _lookRotation = Quaternion.LookRotation(_dir);
         _rotation = Quaternion.Lerp(transform.rotation, _lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         transform.rotation = Quaternion.Euler(0f, _rotation.y, 0f);
+    }
 
-        if(fireCountdown<=0)
+    private void Laser()
+    {
+        if (!lineRenderer.enabled)
         {
-            Shoot();
-            fireCountdown = 1 / fireRate;
+            lineRenderer.enabled = true;
+            impactEffect.Play();
+            impactLight.enabled = true;
         }
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, _target.position);
 
-        fireCountdown -= Time.deltaTime;
+        Vector3 dir = transform.position - _target.position;
+
+        impactEffect.transform.position = _target.position + dir.normalized * 1f ;
+        impactEffect.transform.rotation = Quaternion.LookRotation(dir);  
     }
 
     private void Shoot()
