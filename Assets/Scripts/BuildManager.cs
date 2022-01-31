@@ -19,6 +19,9 @@ public class BuildManager : MonoBehaviour
     public GameObject buildEffect;
 
     private CupidBlueprint cupidToBuild;
+    private Node selectedNode;
+
+    public NodeUI nodeUI;
 
     public bool CanBuild { get { return cupidToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= cupidToBuild.cost; } }
@@ -44,5 +47,26 @@ public class BuildManager : MonoBehaviour
     public void SelectCupidToBuild(CupidBlueprint cupid)
     {
         cupidToBuild = cupid;
+        DeselectNode();
+    }
+
+    public void SelectNode(Node node)
+    {
+        if (selectedNode == node)
+        {
+            DeselectNode();
+            return;
+        }
+
+        selectedNode = node;
+        cupidToBuild = null;
+
+        nodeUI.SetTarget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
     }
 }

@@ -31,13 +31,13 @@ public class Node : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        if (!buildManager.CanBuild) return;
-
         if (cupid != null)
         {
-            Debug.Log("Can't build there!");
+            buildManager.SelectNode(this);
             return;
         }
+
+        if (!buildManager.CanBuild) return;
 
         buildManager.BuildCupidOn(this);
     }
@@ -50,7 +50,7 @@ public class Node : MonoBehaviour
 
         if (buildManager.HasMoney)
         {
-            rend.material.color = hoverColor;
+            rend.material.color = hoverColor; 
         } else
         {
             rend.material.color = notEnoughMoneyColor;
