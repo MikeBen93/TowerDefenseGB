@@ -8,4 +8,7 @@ public class CupidBlueprint
     public GameObject prefab;
     public int cost;
 
+    public GameObject upgradedPrefab;
+    public int upgradeCost;
+
 }

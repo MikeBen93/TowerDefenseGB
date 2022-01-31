@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 50bde2cec43442f489d75294816a1259
+guid: d8574e47af705f64c9016722671ac264
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -65,7 +65,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 38
+    normalSmoothAngle: 29
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
@@ -85,14 +85,14 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1

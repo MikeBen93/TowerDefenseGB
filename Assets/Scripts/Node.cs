@@ -7,8 +7,12 @@ public class Node : MonoBehaviour
     public Color notEnoughMoneyColor;
     public Vector3 positionOffset;
 
-    [Header("optional")]
+    [HideInInspector]
     public GameObject cupid;
+    [HideInInspector]
+    public CupidBlueprint cupidBlueprint;
+    [HideInInspector]
+    public bool isUpgraded = false;
 
     private Color defaultColor;
     private Renderer rend;
@@ -39,7 +43,50 @@ public class Node : MonoBehaviour
 
         if (!buildManager.CanBuild) return;
 
-        buildManager.BuildCupidOn(this);
+        BuildCupid(buildManager.GetCupidToBuild());
+    }
+
+    private void BuildCupid(CupidBlueprint blueprint)
+    {
+        if (PlayerStats.Money < blueprint.cost)
+        {
+            Debug.Log("NOT ENOUGH MONEY TO BUILD");
+            return;
+        }
+
+        PlayerStats.Money -= blueprint.cost;
+
+        GameObject createdCupid = Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        cupid = createdCupid;
+
+        cupidBlueprint = blueprint;
+
+        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 4f);
+
+        Debug.Log("Cupid build!");
+    }
+
+    public void UpgradeCupid()
+    {
+        if (PlayerStats.Money < cupidBlueprint.upgradeCost)
+        {
+            Debug.Log("NOT ENOUGH MONEY TO UPGRADE");
+            return;
+        }
+
+        PlayerStats.Money -= cupidBlueprint.upgradeCost;
+        // get rid of old turret
+        Destroy(cupid);
+        // build a new one
+        GameObject createdCupid = Instantiate(cupidBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        cupid = createdCupid;
+        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 4f);
+
+        isUpgraded = true;
+
+        Debug.Log("Cupid UPGRADED!");
     }
 
     private void OnMouseEnter()

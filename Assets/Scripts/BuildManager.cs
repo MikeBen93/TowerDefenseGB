@@ -26,24 +26,6 @@ public class BuildManager : MonoBehaviour
     public bool CanBuild { get { return cupidToBuild != null; } }
     public bool HasMoney { get { return PlayerStats.Money >= cupidToBuild.cost; } }
 
-    public void BuildCupidOn(Node node)
-    {
-        if(PlayerStats.Money < cupidToBuild.cost)
-        {
-            Debug.Log("NOT ENOUGH MONEY TO BUILD");
-            return;
-        }
-
-        PlayerStats.Money -= cupidToBuild.cost;
-
-        GameObject cupid =  Instantiate(cupidToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.cupid = cupid;
-        GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 4f);
-
-        Debug.Log("Cupid build! Money left: " + PlayerStats.Money);
-    }
-
     public void SelectCupidToBuild(CupidBlueprint cupid)
     {
         cupidToBuild = cupid;
@@ -68,5 +50,10 @@ public class BuildManager : MonoBehaviour
     {
         selectedNode = null;
         nodeUI.Hide();
+    }
+
+    public CupidBlueprint GetCupidToBuild() 
+    {
+        return cupidToBuild;
     }
 }
