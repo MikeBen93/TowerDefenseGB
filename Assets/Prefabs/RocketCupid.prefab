@@ -130,11 +130,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad989f619e8270a498a0ce1e062d8707, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  range: 20
+  arrowPrefab: {fileID: 5225984463182702675, guid: 3b080b56e7abe1a4bbbabb3e73156584, type: 3}
+  fireRate: 0.25
+  useLaser: 0
+  damageOverTime: 30
+  slowAmount: 0.5
+  lineRenderer: {fileID: 0}
+  impactEffect: {fileID: 0}
+  impactLight: {fileID: 0}
   enemyTag: Enemy
   turnSpeed: 10
-  range: 20
-  fireRate: 0.5
-  arrowPrefab: {fileID: 5225984463182702675, guid: 3b080b56e7abe1a4bbbabb3e73156584, type: 3}
   firePoint: {fileID: 5396164667271584682}
 --- !u!1 &6470416922770423926
 GameObject:

@@ -6,6 +6,7 @@ public class NodeUI : MonoBehaviour
     private Node _target;
     public GameObject ui;
     public Text upgradeCostText;
+    public Text sellCostText;
     public Button upgradeButton;
 
     public void SetTarget(Node target)
@@ -23,7 +24,7 @@ public class NodeUI : MonoBehaviour
             upgradeCostText.text = "UPGRADED";
             upgradeButton.interactable = false;
         }
-        
+        sellCostText.text = "$" + _target.cupidBlueprint.GetSellAmount();
 
         ui.SetActive(true);
     }
@@ -36,6 +37,12 @@ public class NodeUI : MonoBehaviour
     public void Upgrade()
     {
         _target.UpgradeCupid();
+        BuildManager.instance.DeselectNode();
+    }
+
+    public void Sell()
+    {
+        _target.SellCupid();
         BuildManager.instance.DeselectNode();
     }
 }

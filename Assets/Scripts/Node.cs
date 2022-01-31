@@ -85,8 +85,17 @@ public class Node : MonoBehaviour
         Destroy(effect, 4f);
 
         isUpgraded = true;
+    }
 
-        Debug.Log("Cupid UPGRADED!");
+    public void SellCupid()
+    {
+        PlayerStats.Money += cupidBlueprint.GetSellAmount();
+
+        GameObject effect = Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 4f);
+
+        Destroy(cupid);
+        cupidBlueprint = null;
     }
 
     private void OnMouseEnter()
