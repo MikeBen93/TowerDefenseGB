@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a3fb79332ca2f4e9283cf79ff3c1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
-  impactEffect: {fileID: 5278163957998829575, guid: ccd6ed3a42a044a41b0a3d29b33b3781, type: 3}
-  explosionRadius: 0
+  speed: 20
   damage: 50
+  explosionRadius: 0
+  impactEffect: {fileID: 5278163957998829575, guid: ccd6ed3a42a044a41b0a3d29b33b3781, type: 3}
 --- !u!1001 &8305043065075028467
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -63,8 +63,6 @@ public class Node : MonoBehaviour
 
         GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 4f);
-
-        Debug.Log("Cupid build!");
     }
 
     public void UpgradeCupid()
