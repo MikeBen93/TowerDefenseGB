@@ -128,7 +128,7 @@ MonoBehaviour:
   health: 50
   worth: 60
   deathEffect: {fileID: 5195937098189120489, guid: 0073476ce5b303942843f9296b9f16cd, type: 3}
-  healthBar: {fileID: 4389164637546055665, guid: 10846552df59ffb41b4c2e251eb47dd8, type: 3}
+  healthBar: {fileID: 960709531164926121}
 --- !u!114 &801609032125148652
 MonoBehaviour:
   m_ObjectHideFlags: 0
