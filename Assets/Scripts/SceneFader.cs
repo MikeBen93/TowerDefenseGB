@@ -29,8 +29,6 @@ public class SceneFader : MonoBehaviour
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, t);
             yield return 0; //skip to the next frame 
         }
-
-        //load scene 
     }
 
     IEnumerator FadeOut(string scene)
@@ -39,7 +37,7 @@ public class SceneFader : MonoBehaviour
 
         while (t < 1f)
         {
-            t += Time.deltaTime * 0.5f;
+            t += Time.deltaTime;
             float a = fadeCurve.Evaluate(t);
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, t);
             yield return 0; //skip to the next frame 

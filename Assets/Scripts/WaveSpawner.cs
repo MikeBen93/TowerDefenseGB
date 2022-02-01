@@ -6,10 +6,13 @@ using System.Collections;
 public class WaveSpawner : MonoBehaviour
 {
     public static int enemiesAlive = 0;
+
     public Wave[] waves;
-    //public Transform enemyPrefab;
+
     public Transform spawnPoint;
+
     public Text waveCountdownText;
+
     public GameController gameController;
 
     public float timeBetweenWaves = 3f;
@@ -17,8 +20,13 @@ public class WaveSpawner : MonoBehaviour
 
     private int _waveIndex = 0;
 
+    private void Start()
+    {
+        enemiesAlive = 0;
+    }
     private void Update()
     {
+
         if (enemiesAlive > 0) return;
 
         if (_waveIndex == waves.Length)

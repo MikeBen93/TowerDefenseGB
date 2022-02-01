@@ -5608,10 +5608,10 @@ MonoBehaviour:
   - enemy: {fileID: 1716215646857903290, guid: da9e1bb7ff6262049b82a2405af96d01, type: 3}
     count: 4
     rate: 1
-  - enemy: {fileID: 1716215646857903290, guid: da9e1bb7ff6262049b82a2405af96d01, type: 3}
+  - enemy: {fileID: 1716215646857903290, guid: 17b470e382fef6d47b11dcb02102a761, type: 3}
     count: 5
     rate: 1
-  - enemy: {fileID: 2768984556725328866, guid: 10846552df59ffb41b4c2e251eb47dd8, type: 3}
+  - enemy: {fileID: 1716215646857903290, guid: da9e1bb7ff6262049b82a2405af96d01, type: 3}
     count: 2
     rate: 0.5
   spawnPoint: {fileID: 331193117}

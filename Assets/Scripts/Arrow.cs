@@ -27,9 +27,6 @@ public class Arrow : MonoBehaviour
         }
 
         Vector3 dir = _target.position - transform.position;
-        //Quaternion _lookRotation = Quaternion.LookRotation(dir);
-        //Vector3 _rotation = Quaternion.Lerp(transform.rotation, _lookRotation, Time.deltaTime * 10).eulerAngles;
-        //transform.rotation = Quaternion.Euler(0f, _rotation.y, 0f);
 
         float distanceThisFrame = speed * Time.deltaTime;
 
