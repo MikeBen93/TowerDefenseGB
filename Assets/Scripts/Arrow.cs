@@ -7,18 +7,15 @@ public class Arrow : MonoBehaviour
     private Transform _target;
 
     public float speed = 15;
-    public GameObject impactEffect;
-    public float explosionRadius = 0f;
+
     public int damage = 50;
+
+    public float explosionRadius = 0f;
+    public GameObject impactEffect;
 
     public void SetAim(Transform target)
     {
         _target = target;
-    }
-
-    private void SeekAim()
-    {
-
     }
 
     private void Update()
@@ -80,7 +77,7 @@ public class Arrow : MonoBehaviour
         {
             if (collider.tag == "Enemy")
             {
-                Damage(collider.transform);
+                Damage(collider.transform.parent);
             }
         }
     }
