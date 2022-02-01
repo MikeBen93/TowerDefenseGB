@@ -3,4 +3,7 @@ Link to build: https://drive.google.com/drive/folders/1CIGJIEpbWMFpDu6cjfYS1ah5C
 
 TowerDefense game in theme of Valentine's Day:
 - cupids as towers
+  - cupids are upgradable
+  - several types of cupid  
 - hearts as enemies
+  - several types of enemies
